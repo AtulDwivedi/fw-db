@@ -6,6 +6,8 @@ import com.atuldwivedi.fw.db.dml.DmlDao;
 import com.atuldwivedi.fw.db.dml.DmlDaoImpl;
 import com.atuldwivedi.fw.db.dql.DqlDao;
 import com.atuldwivedi.fw.db.dql.DqlDaoImpl;
+import com.atuldwivedi.fw.db.reader.QueryReader;
+import com.atuldwivedi.fw.db.reader.QueryReaderImpl;
 
 public class InstanceFactory {
 	
@@ -19,5 +21,9 @@ public class InstanceFactory {
 	
 	public static DdlDao getDdlDao() {
 		return new DdlDaoImpl();
+	}
+	
+	public static QueryReader getQueryReader() {
+		return new QueryReaderImpl();
 	}
 }
