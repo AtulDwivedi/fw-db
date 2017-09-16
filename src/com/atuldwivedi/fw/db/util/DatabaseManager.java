@@ -1,5 +1,7 @@
 package com.atuldwivedi.fw.db.util;
 
+import com.atuldwivedi.fw.db.ddl.DdlDao;
+import com.atuldwivedi.fw.db.ddl.DdlDaoImpl;
 import com.atuldwivedi.fw.db.dml.DmlDao;
 
 public class DatabaseManager {
@@ -19,7 +21,12 @@ public class DatabaseManager {
 		}
 
 		if (((String) System.getProperty("ddl")).equalsIgnoreCase("true")) {
-			System.setProperty("ddl.filePath", ddlFilePath);
+			System.setProperty("ddl.filePath", dmlFilePath);
+			DdlDao ddlDao = new DdlDaoImpl();
+			if(((String) System.getProperty("ddl.drop")).equalsIgnoreCase("true")){
+				ddlDao.dropTables(ddlFilePath);
+			}
+			ddlDao.createTables(ddlFilePath);
 		}
 
 		if (((String) System.getProperty("dml")).equalsIgnoreCase("true")) {
